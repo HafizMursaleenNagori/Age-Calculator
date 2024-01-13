@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #FC766AFF;
+        }
+        input{
+            padding: 20px 50px;
+            border-radius: 10px;
+            border: none;
+            margin-top: 50px;
+            background-color: transparent;
+            color: rgb(38, 109, 185);
+            font-weight: bold;
+            border: 2px dashed rgb(38, 109, 185);
+            font-size: large;
+        }
+        input:focus{
+            border: none;
+            cursor:text;
+        }
+        div{
+            margin-left: 80px;
+            margin-top: 50px;
+            color: rgb(38, 109, 185);
+            font-size: 26px;
+        }
+        h5{
+            color: rgb(50, 106, 167);
+            margin-left: 50px;
+            margin-top: -10px;
+        }
+        button{
+            padding: 23px 25px;
+            border: none;
+            border-radius: 10px;
+            position: relative;
+            left: 20px;
+            background-color: rgb(38, 109, 185);
+            color: #FC766AFF;
+            font-weight: bold;
+            font-size: medium;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+        p{
+            position: relative;
+            top: 20px;
+            color: rgb(38, 109, 185);
+            font-weight: bold;
+            font-size: larger;
+        }
+    </style>
+</head>
+<body>
+<div>
+<h1>Age Calculator</h1>
+<h5><u>Design by Mursaleen Ahmed</u></h5>
+</div>
+    <center>
+        <input type="date" name="" id="calculate" onfocus="this.style.backgroundColor='rgb(38, 109, 185)';this.style.color='#FC766AFF';">
+        <button onclick="calculateAge()"onfocus="this.style.border='groove rgb(38, 109, 185)';" onmouseout="this.style.border='none'">Calculate</button>
+        <p id="showResult">Your age is: 0 years, 0 months, and 0 days</p>
+    </center>
+
+ 
+<script>   
+     function calculateAge() {
+        var userInput = document.getElementById("calculate").value;
+        var bDay = new Date(userInput);
+        var today = new Date();      
+        
+        var years = today.getFullYear() - bDay.getFullYear();
+        var months = today.getMonth() - bDay.getMonth();
+        var days = today.getDate() - bDay.getDate();
+
+        if (months < 0 || (months === 0 && days < 0)) {
+            years--;
+            months+=12;
+        }
+
+        if (days < 0) {
+            months--;
+            days = new Date(today.getFullYear(), today.getMonth(), 0).getDate() + days;
+        }
+
+        document.getElementById("showResult").innerText = `Your age is: ${years} years,  ${months} months, and ${days} days`
+     }
+  
+
+
+</script>
+</body>
+</html>
